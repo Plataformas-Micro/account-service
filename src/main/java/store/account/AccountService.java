@@ -47,6 +47,11 @@ public class AccountService {
         .toList();
     }
 
+    public Account findByEmailAndPassword(String email, String password) {
+        String sha256 = calcHash(password);
+        return accountRepository.findByEmailAndPasswordSha256(email, sha256).orElse(null).to();
+    }
+
     private String calcHash(String text) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
