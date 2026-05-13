@@ -5,3 +5,4 @@
 /Volumes/FeijontsDev/insper/pma/plataforma/api/account-service/src/main/java/store/account/AccountRepository.java
 /Volumes/FeijontsDev/insper/pma/plataforma/api/account-service/src/main/java/store/account/AccountResource.java
 /Volumes/FeijontsDev/insper/pma/plataforma/api/account-service/src/main/java/store/account/AccountService.java
+/Volumes/FeijontsDev/insper/pma/plataforma/api/account-service/src/main/java/store/account/RedisConfig.java

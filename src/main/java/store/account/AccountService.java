@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,6 +21,7 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @CachePut(value = "accounts", key = "#result.id()")
     public Account create(Account account) {
 
         if (account.password() == null || account.password().trim().length() == 0) {
@@ -31,10 +35,12 @@ public class AccountService {
         ).to();
     }
 
+    @CacheEvict(value = "accounts", key = "#id")
     public void delete(String id) {
         accountRepository.deleteById(id);
     }
 
+    @Cacheable(value = "accounts", key = "#id")
     public Account findById(String id) {
         return accountRepository.findById(id).orElse(null).to();
     }
