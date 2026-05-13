@@ -19,3 +19,10 @@ spring:
     properties:
       hibernate:
         default_schema: accounts
+
+management:
+  endpoints:
+    web:
+      base-path: /accounts/actuator
+      exposure:
+        include: ['prometheus']
