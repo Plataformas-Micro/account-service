@@ -51,3 +51,7 @@ spec:
                 secretKeyRef:
                   name: account-secrets
                   key: DATABASE_PASSWORD
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"
